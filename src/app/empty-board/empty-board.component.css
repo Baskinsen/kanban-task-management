@@ -1,0 +1,39 @@
+div {
+        display: flex;
+        flex-direction: column;
+        height: 80dvh;
+        width:100%;
+        box-sizing: border-box;
+        justify-content: center;
+        align-items: center;
+     
+    
+}
+
+.create-column{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #FFFFFF;
+    background-color: #635FC7;
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 50;
+    margin: 0 auto;
+
+    &:hover {
+        background-color: #A8A4FF;
+    }
+}
+
+p {
+    color: #828FA3;
+    font-size: 18px;
+    font-weight: bold;
+}

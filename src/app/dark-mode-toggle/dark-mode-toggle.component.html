@@ -1,0 +1,7 @@
+<div class="dark-mode-toggle" (click)="toggleDarkMode()" [ngClass]="{'dark-mode-toggle-dark': darkModeService.darkMode() ? true : false}">
+    <img src="assets/icon-light-theme.svg" alt="">
+    <div class="toggle-container" [ngClass]="{'toggle-container-light':!darkModeService.darkMode() ? true : false,'toggle-container-dark': darkModeService.darkMode() ? true : false}">
+        <div class="toggle-circle"></div>
+    </div>
+    <img src="assets/icon-dark-theme.svg" alt="">
+</div>

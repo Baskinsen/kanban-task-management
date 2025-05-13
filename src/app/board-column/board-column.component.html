@@ -1,0 +1,17 @@
+
+<div>
+    <div>
+        <div class="circle">
+        </div>
+        <span class="column-title">{{ColumnData.name}} ({{ColumnData.tasks?.length}}) </span>
+    </div>
+    <div>
+
+        <div *ngFor="let task of ColumnData.tasks" class="task-card" [ngClass]="{'dark-mode': darkModeService.darkMode()}" (click)="openModal('taskDetails', task)">
+            <div class="task-card-header">
+                <h3>{{task.title}}</h3>
+            </div>
+            <p>{{completedSubtasksNumber(task)}} of {{task.subtasks.length}} subtasks</p>
+        </div>
+    </div>
+</div>

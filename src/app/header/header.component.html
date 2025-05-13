@@ -1,0 +1,31 @@
+<nav class="header" [ngClass]="{'header-dark': darkModeEnabled}">
+    <ul class="header-list">
+        <li>
+            <img [src]="logo()" alt="Kanban Logo" class="logo">
+        </li>
+        <li>
+          <ul class="header-list-2">
+            <li *ngIf="isMobile"><img [src]="logo()" alt=""></li>
+            <li><h1 [ngClass]="{'h1-dark':darkModeEnabled}">{{activeBoard}}</h1><img *ngIf="isMobile" src="assets/icon-chevron-down.svg" alt=""></li>
+            <li>
+                <ul>
+                    <li class="add-task-button" [ngClass]="{'inactive-add-task-button': isBoardEmpy}"(click)="openAddTaskModal('addTask')"><img src="assets/icon-add-task-mobile.svg" alt=""><span *ngIf="!isMobile">Add New Task</span></li>
+                    <li (click)="toggleMenu()"><img src="assets/icon-vertical-ellipsis.svg" alt=""></li>
+                </ul>
+            </li>
+        </ul>  
+        </li>
+        
+       
+    </ul>
+   <ng-container *ngIf="showMenu">
+        <ng-container *ngTemplateOutlet="moreMenu"></ng-container>
+    </ng-container>
+</nav>
+
+<ng-template #moreMenu>
+    <ul class="more-menu" [ngClass]="{'more-menu-dark': darkModeEnabled}">
+      <li (click)="openEditModal('editBoard')">Edit Board</li>
+      <li (click)="openDeleteModal('deleteBoard')">Delete Board</li>
+    </ul>  
+</ng-template>

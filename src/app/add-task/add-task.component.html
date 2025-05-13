@@ -1,0 +1,38 @@
+<div>
+    <form [formGroup]="taskForm" [ngClass]="{'dark-mode': darkModeEnabled}">
+        <div>
+            <label for="title">Title</label>
+            <input type="text" placeholder="e.g take coffee break" id="title" [formControl]="title" name="title" required>
+        </div>
+        <div>
+            <label for="title">Description</label>
+            <textarea name="description" id="description" placeholder="e.g. It’s always good to take a break. This 15 minute break will recharge the batteries a little." [formControl]="description" name="title" required></textarea>
+        </div>
+        <div formArrayName="subtasks" class="subtasks-container">
+            <label for="subtasks">Subtasks</label>
+            <div *ngFor="let item of subtasks.controls; let i = index" [formGroupName]="i" class="column-input" [@columnAnimation]>
+                    <input type="text" placeholder="e.g. Make coffee" id="subtasks" formControlName="title" name="subtasks" required>
+                    <img src="assets/icon-cross.svg" alt="remove icon" (click)="removeSubtask(i)">
+            </div>
+            <button type="button" (click)="addSubtask()">
+                
+                <span>+ Add New Subtask</span>
+            </button>
+   
+        </div>
+        <div class="status">
+            <label for="status">Status</label>
+            <div class="value" (click)="dropdownOpen = !dropdownOpen"><small>{{column.value}}</small> <img src="assets/icon-chevron-down.svg" alt=""></div>
+            <div class="columns" *ngIf="dropdownOpen">
+                <div *ngFor="let column of columnNames; let i = index" (click)="selectColumn(column)">{{column}}</div>
+            </div>
+        </div>
+        <div>
+           
+            <button type="button" (click)="addTask()" >
+                Create New Task
+            </button>
+        </div>
+    </form>
+
+</div>

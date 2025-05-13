@@ -1,0 +1,60 @@
+.dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F4F7FD;
+    gap: 10px;
+    padding: 10px;
+    width: 75%;
+    margin: 0 auto;
+    border-radius: 10px;
+    cursor: pointer;
+
+  
+}
+
+.dark-mode-toggle-dark {
+    background-color: #20212C;
+}
+
+.toggle-container {
+    display: flex;
+    width: 50px;
+    border-radius: 30px;
+    padding: 5px;
+    background-color: #635FC7;
+    justify-content: start;
+    transition: all 0.5s ease;
+}
+
+.toggle-container:hover {
+    background-color: #A8A4FF;
+    transition: all 0.5s ease;
+
+    .toggle-circle {
+        width: 22px;
+        height: 22px;
+        transition: width 0.5s ease, height 0.5s ease;
+    }
+
+}
+
+.toggle-container-light {
+    justify-content: start;
+    transition: all 0.5s ease;
+
+    
+}
+
+.toggle-container-dark {
+    justify-content: end;
+}
+
+.toggle-circle {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+  
+
+}

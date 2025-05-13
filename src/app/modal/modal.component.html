@@ -1,0 +1,47 @@
+
+        <div class="modal-container" *ngIf="modalService.isOpen" (click)="modalService.close()" [ngClass]="{'dark-mode': darkModeEnabled}">
+
+            <div class="modal-content" (click)="$event.stopPropagation()" >
+                <div class="modal-header">
+                    <h2>{{config?.title}}</h2>
+                    <img *ngIf="isEditOrDetails()" src="assets/icon-vertical-ellipsis.svg" alt="" class="icon-ellipsis" (click)="openMenu()">
+                </div>
+                @switch (modalService.modalConfig()?.name) {
+                    @case ('addTask') {
+                      <app-add-task [data]="modalService.modalConfig()?.data" />
+                    }
+                    @case ('editTask') {
+                      <app-edit-task [data]="modalService.modalConfig()?.data" />
+                    }
+                    @case ('taskDetails') {
+                      <app-task-details [data]="modalService.modalConfig()?.data" />
+                    }
+                    @case ('deleteTask') {
+                      <app-delete-task [data]="modalService.modalConfig()?.data" />
+                    }
+                    @case ('addBoard') {
+                      <app-add-board />
+                    }
+                    @case ('editBoard') {
+                      @if (modalService.modalConfig()?.data) {
+                        <app-edit-board [data]="modalService.modalConfig()?.data " />
+                      }
+                    }
+                    @case ('deleteBoard') {
+                      <app-delete-board [data]="modalService.modalConfig()?.data" />
+                    }
+                  }
+                  <ng-container *ngIf="showMenu">
+                    <ng-container *ngTemplateOutlet="moreMenu"></ng-container>
+                </ng-container>
+            </div>
+           
+        </div>
+
+
+        <ng-template #moreMenu>
+          <ul class="more-menu">
+            <li (click)="openEditTaskModal('editTask')">Edit Task</li>
+            <li (click)="openDeleteTaskModal('deleteTask')">Delete Task</li>
+          </ul>  
+      </ng-template>

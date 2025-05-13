@@ -1,0 +1,110 @@
+button {
+    color: black;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    div:has(label) {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 20px;
+
+        input {
+            background-color: #fff;
+            border: solid 1px #828FA3;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #000;
+        }
+    }
+ label {
+    color: #828FA3;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+ }
+}
+
+.column-input {
+    padding: 0;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+   
+    input {
+        width: 100%;
+    }
+
+    img {
+        margin: auto 0;
+        cursor: pointer;
+    }
+   
+}
+
+div:has(button ) {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+button {
+    width: 100%;
+}
+
+button:first-of-type {
+    background-color: #F4F7FD;
+    color: #635FC7;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 15px 15px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+button:last-of-type {
+    background-color: #635FC7;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 15px 15px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+
+.dark-mode {
+    background-color: #2B2C37;
+    color: #fff;
+
+    input {
+        background-color: #2B2C37;
+        color: #fff;
+        border: solid 1px #828FA3;
+    }
+
+        div:has(label) {
+            input {
+                background-color: #2B2C37;
+                border: solid 1px #828FA3;
+                color: #fff;
+            }
+        }
+
+}
+    
+
+   
+    
+

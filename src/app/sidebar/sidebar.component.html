@@ -1,0 +1,24 @@
+<nav [ngClass]="{'nav-light': !darkModeService.darkMode() ? true : false,'nav-dark': darkModeService.darkMode() ? true : false, 'hide-nav': darkModeService.showSideBar() === true ? true : false}" >
+    <div>
+        <h2>ALL BOARDS ({{numberOfBoards}})</h2>
+        <ul>
+            <li *ngFor="let board of boards(); let index = index" [ngClass]="{'active-board': board === activeBoard}" (click)="setActiveBoard(board)">
+                    <img src="/assets/icon-board.svg" alt="" >
+                   <span>{{board}}</span> 
+            </li>
+            <li class="create-board" (click)="openModal('addBoard')">
+                <img src="/assets/icon-board.svg" alt="">
+                <span>+ Create New Board</span> 
+            </li>
+        </ul>
+    </div>
+   
+    <div class="sidebar-footer">
+        <app-dark-mode-toggle ></app-dark-mode-toggle>
+        <div (click)="toggleSidebar()">
+            <img src="assets/icon-hide-sidebar.svg" alt="">
+            <span>Hide Sidebar</span>
+        </div>
+    </div>
+ 
+</nav>

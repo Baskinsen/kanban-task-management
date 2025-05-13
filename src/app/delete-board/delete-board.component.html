@@ -1,0 +1,6 @@
+<div class="delete-container">
+    <p>Are you sure you want to delete the ‘{{data.name}}’ board? This action will remove all columns and tasks and cannot be reversed.</p>
+    <div>
+        <button type="button" (click)="deleteBoard()">Delete</button><button type="button" (click)="modalService.close()">Cancel</button>
+    </div>
+</div>

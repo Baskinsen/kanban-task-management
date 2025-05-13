@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+:root {
+    color-scheme: light dark;
+}
+
+
+
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+app-root {
+   font-family: "Plus Jakarta Sans", sans-serif;;
+    margin: 0;
+    padding: 0;
+    background-color: light-dark(#f0f0f0, #2B2C37) ;
+    color: light-dark(#2B2C37, #ffffff);
+}
+
+

@@ -1,0 +1,167 @@
+button {
+    color: black;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    div:has(label) {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 20px;
+
+        input, textarea {
+            background-color: #fff;
+            border: solid 1px #828FA3;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #000;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+    }
+ label {
+    color: #828FA3;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+ }
+}
+
+.column-input {
+    padding: 0;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+   
+    input {
+        width: 100%;
+    }
+
+
+
+    img {
+        margin: auto 0;
+        cursor: pointer;
+    }
+   
+}
+
+div:has(button ) {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    width: 100%;
+}
+
+.subtasks-container
+button:first-of-type {
+    background-color: #F4F7FD;
+    color: #635FC7;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 15px 15px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+button:last-of-type {
+    background-color: #635FC7;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 15px 15px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.status {
+    color:#000;
+    position: relative;
+    width: 100%;
+    .value {
+        width:100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border: solid 1px #828FA3;
+        border-radius: 10px;
+        box-sizing: border-box;
+
+        small {
+            font-size: 16px;
+        }
+        img {
+            margin:auto 0;
+        }
+    }
+
+    .columns {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        top:80px;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        position: absolute;
+        width: 100%;
+        box-sizing: border-box;
+        background-color: #FFFFFF;
+
+        div {
+            color: #828FA3;
+        }
+    }
+}
+
+.dark-mode {
+    background-color: #2B2C37;
+    color: #fff;
+
+    input {
+        background-color: #2B2C37;
+        color: #fff;
+        border: solid 1px #828FA3;
+    }
+
+        div:has(label) {
+            input, textarea {
+                background-color: #2B2C37;
+                border: solid 1px #828FA3;
+                color: #fff;
+            }
+        }
+
+        .status {
+            .value {
+                background-color: #2B2C37;
+                border: solid 1px #828FA3;
+                color: #fff;
+            }
+
+            .columns {
+                background-color: #2B2C37;
+                border: solid 1px #828FA3;
+                
+                div {
+                    color: #fff;
+                }
+            }
+        }
+}

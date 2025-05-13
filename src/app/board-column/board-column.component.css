@@ -1,0 +1,51 @@
+
+
+div:has(.task-card) {
+    display: grid;
+    gap: 20px;
+}
+
+.column-title {
+    color: #828FA3;
+}
+
+.task-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.101961); /* Updated box-shadow for drop shadow effect */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    h3 {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 700;
+        color: #000112;
+    }
+
+    p {
+        margin: 5px 0 0 0;
+        font-size: 12px;
+        font-weight: 600;
+        color: #828FA3;
+    }
+
+    &:hover {
+        transform: translateY(-2px); /* Optional: adds subtle lift effect on hover */
+        box-shadow: 0px 8px 12px rgba(54, 78, 126, 0.15); /* Deeper shadow on hover */
+    }
+}
+
+.dark-mode {
+    background-color: #2B2C37;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adjusted shadow for dark mode */
+
+    h3 {
+        color: #FFFFFF;
+    }
+
+    &:hover {
+        box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.15); /* Adjusted hover shadow for dark mode */
+    }
+}

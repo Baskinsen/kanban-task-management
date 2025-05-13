@@ -1,0 +1,25 @@
+<div>
+    <form [formGroup]="boardForm" [ngClass]="{'dark-mode': darkModeEnabled}">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" placeholder="e.g Web Design" id="name" [formControl]="name" name="name" required>
+        </div>
+        <div formArrayName="columns">
+            <label for="columns">Columns</label>
+            <div *ngFor="let item of columns.controls; let i = index" [formGroupName]="i" class="column-input" [@columnAnimation]>
+                    <input type="text" placeholder="e.g Todo" id="columns" formControlName="name" name="columns" required>
+                    <img src="assets/icon-cross.svg" alt="remove icon" (click)="removeColumn(i)">
+            </div>
+   
+        </div>
+        <div>
+            <button type="button" (click)="addColumn()">
+                <span>+ Add New Column</span>
+            </button>
+            <button type="button" (click)="editBoard()" >
+                Save Changes
+            </button>
+        </div>
+    </form>
+
+</div>
