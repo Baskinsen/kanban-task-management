@@ -13,7 +13,7 @@ export class DarkModeToggleComponent {
 
   constructor() {
     // Initialize the theme based on the current state
-    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const currentTheme = document.documentElement.getAttribute('data-bs-theme');
     if (currentTheme === 'dark') {
       this.darkModeService.darkMode.set(true);
     } else {

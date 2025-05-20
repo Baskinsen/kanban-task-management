@@ -23,14 +23,14 @@ div {
 }
 
 .create-column {
-    background-color:  #E9EFFA;
+    background-color:  var(--background-secondary);
     height: 100%;
     text-align: center;
     border-radius: 10px;
     padding: 15px;
     span {
         margin: auto 0;
-        color: #828FA3;
+        color: var(--text-secondary);
         font-size: 22px;
         font-weight: 600;
         cursor: pointer;
@@ -43,9 +43,3 @@ div {
     }
 }
 
-.dark-mode {
-
-    .create-column {
-        background-color: #2B2C37;
-    }
-}

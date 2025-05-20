@@ -1,4 +1,4 @@
-<div *ngIf="data.task" class="task-details" [ngClass]="{'dark-mode': darkModeEnabled}">
+<div *ngIf="data.task" class="task-details">
     <p>{{data.task.description}}</p>
     <div>
         <h3>Subtasks {{completedSubtasksNumber()}} of {{data.task.subtasks.length}}</h3>
@@ -12,7 +12,7 @@
         </div>
         <div class="status">
             <label for="status">Current Status</label>
-            <div class="value" (click)="dropdownOpen = !dropdownOpen"><small>{{status(  )}}</small> <img src="assets/icon-chevron-down.svg" alt=""></div>
+            <div class="value" (click)="dropdownOpen = !dropdownOpen"><small>{{status()}}</small> <img src="assets/icon-chevron-down.svg" alt=""></div>
             <div class="columns" *ngIf="dropdownOpen">
                 <div *ngFor="let column of columnNames; let i = index" (click)="selectColumn(column)">{{column}}</div>
             </div>

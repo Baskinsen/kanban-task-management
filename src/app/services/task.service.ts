@@ -102,6 +102,23 @@ export class TaskService {
     this.modalService.close()
   }
 
+  editTask(task: Task, columnName: string, boardIndex: number) {
+    this.data.update((prevData)=> {
+      const updatedData = [...prevData];
+      const columnIndex = updatedData[boardIndex].columns.findIndex((column) => column.name === columnName);
+      if (columnIndex !== -1 && updatedData[boardIndex].columns[columnIndex].tasks !== undefined) {
+        const taskIndex = updatedData[boardIndex].columns[columnIndex].tasks.findIndex((t) => t.title === task.title);
+        if (taskIndex !== -1) {
+          updatedData[boardIndex].columns[columnIndex].tasks[taskIndex] = task;
+        }
+      }
+      return updatedData;
+    })
+    this.updateTaskColumn(task, columnName, boardIndex)
+    this.removeTaskFromColumn(task.title, columnName, boardIndex)
+    this.modalService.close()
+  }
+
   getBoardColumns(boardName:string) {
     return this.data().find((board)=> board.name === boardName)?.columns.map((column) => column.name) ?? []
   }
@@ -117,12 +134,12 @@ export class TaskService {
     })
     // this.modalService.close()
   }
-  removeTaskFromColumn(task: Task, columnName: string, boardIndex: number) {
+  removeTaskFromColumn(taskTitle: string, columnName: string, boardIndex: number) {
     this.data.update((prevData) => {
       const updatedData = [...prevData];
       const columnIndex = updatedData[boardIndex].columns.findIndex((column) => column.name === columnName);
       if (columnIndex !== -1 && updatedData[boardIndex].columns[columnIndex].tasks !== undefined) {
-        updatedData[boardIndex].columns[columnIndex].tasks = updatedData[boardIndex].columns[columnIndex].tasks?.filter((t) => t.title !== task.title);
+        updatedData[boardIndex].columns[columnIndex].tasks = updatedData[boardIndex].columns[columnIndex].tasks?.filter((t) => t.title !== taskTitle);
       }
       return updatedData;
     });

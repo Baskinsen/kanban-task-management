@@ -10,10 +10,10 @@ div:has(.task-card) {
 }
 
 .task-card {
-    background-color: #fff;
+    background-color: var(--background-secondary);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.101961); /* Updated box-shadow for drop shadow effect */
+    box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.101961); 
     cursor: pointer;
     transition: transform 0.2s ease;
 
@@ -21,7 +21,7 @@ div:has(.task-card) {
         margin: 0;
         font-size: 15px;
         font-weight: 700;
-        color: #000112;
+        color: var(--text-primary);
     }
 
     p {
@@ -32,8 +32,8 @@ div:has(.task-card) {
     }
 
     &:hover {
-        transform: translateY(-2px); /* Optional: adds subtle lift effect on hover */
-        box-shadow: 0px 8px 12px rgba(54, 78, 126, 0.15); /* Deeper shadow on hover */
+        transform: translateY(-2px); 
+        box-shadow: 0px 8px 12px rgba(54, 78, 126, 0.15); 
     }
 }
 

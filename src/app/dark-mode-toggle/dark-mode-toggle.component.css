@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #F4F7FD;
+    background-color: var(--background-primary);
     gap: 10px;
     padding: 10px;
     width: 75%;
@@ -13,22 +13,18 @@
   
 }
 
-.dark-mode-toggle-dark {
-    background-color: #20212C;
-}
-
 .toggle-container {
     display: flex;
     width: 50px;
     border-radius: 30px;
     padding: 5px;
-    background-color: #635FC7;
+    background-color: var(--primary);
     justify-content: start;
     transition: all 0.5s ease;
 }
 
 .toggle-container:hover {
-    background-color: #A8A4FF;
+    background-color: var(--primary-hover);
     transition: all 0.5s ease;
 
     .toggle-circle {

@@ -12,8 +12,8 @@ import { ModalService, ModalType } from '../services/modal-service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
-  logo = signal( 'assets/logo-dark.svg');
-  isMobile = false;
+  logo = signal( 'assets/mobile.svg');
+  isMobile = signal(false);
   taskService = inject(TaskService)
   darkModeService = inject(DarkModeService);
   modalService = inject(ModalService)
@@ -26,13 +26,15 @@ export class HeaderComponent implements OnInit {
   constructor(private cdr: ChangeDetectorRef) {
     effect(()=> {
       this.darkModeEnabled = this.darkModeService.darkMode();
-     
-    this.logo.set(this.darkModeService.darkMode() == true ? 'assets/logo-light.svg' : 'assets/logo-dark.svg');
+     if(window.innerWidth >= 425) {
+      this.logo.set(this.darkModeService.darkMode() == true ? 'assets/logo-light.svg' : 'assets/logo-dark.svg');
     this.taskService.data().map(board=> {
       if(board.name == this.taskService.activeBoard()) {
         this.isBoardEmpy = board.columns.length == 0
       }
     })
+     }
+    
     })
   }
 
@@ -54,10 +56,7 @@ export class HeaderComponent implements OnInit {
   
     console.log(this.taskService.activeBoard$$.getValue())
     console.log(this.isMobile)
-    if(this.isMobile) {
-      this.logo.set('assets/logo-mobile.svg')
-    }
-    this.cdr.detectChanges();
+   
     console.log(this.isBoardEmpy)
   }
 
@@ -67,7 +66,12 @@ export class HeaderComponent implements OnInit {
   }
 
   private checkScreenSize(): void {
-    this.isMobile = window.innerWidth < 768;
+    console.log(window.innerWidth)
+    
+    if(window.innerWidth <= 425) {
+      this.isMobile.set(true);
+      this.logo.set('assets/logo-mobile.svg')
+    }
     this.cdr.detectChanges();
   }
 

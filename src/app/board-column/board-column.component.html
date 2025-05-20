@@ -7,7 +7,7 @@
     </div>
     <div>
 
-        <div *ngFor="let task of ColumnData.tasks" class="task-card" [ngClass]="{'dark-mode': darkModeService.darkMode()}" (click)="openModal('taskDetails', task)">
+        <div *ngFor="let task of ColumnData.tasks" class="task-card"  (click)="openModal('taskDetails', task)">
             <div class="task-card-header">
                 <h3>{{task.title}}</h3>
             </div>

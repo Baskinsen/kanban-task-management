@@ -1,8 +1,11 @@
-<div class="app-container" [ngClass]="{'app-container-hidden-nav': !navShown}">
+<div class="container-fluid row gx-0">
   <app-header></app-header>
-  <main class="app-content"[ngClass]="{'app-content-dark': darkModeEnabled}" >
-  <app-sidebar [ngClass]="{'hide-nav': !navShown}"></app-sidebar>
+  <main class="row  gx-0">
+  <app-sidebar class="col"  [ngClass]="{'hide-nav': !darkModeService.showSideBar()}"></app-sidebar>
+  <div class="col-sm-9 col-md-8 col-lg-9  gx-0">
+
     <router-outlet />
+  </div>
     <div class="show-sidebar" [ngClass]="{'hide-show-sidebar': darkModeService.showSideBar()}" (click)="toggleSidebar()">
       <img src="/assets/icon-show-sidebar.svg" alt="">
   </div>

@@ -47,7 +47,7 @@ export class ModalComponent {
   openEditTaskModal(type: ModalType) {
     this.modalService.modalConfig.set({
       name: type,
-      title:  '',
+      title:  'Edit Task',
       message: '',
       data: {
         task: {

@@ -1,10 +1,10 @@
-<div class="board" [ngClass]="{'dark-mode': darkModeService.darkMode()}">
+<div class="w-100  h-100 overflow-x-auto d-flex flex-column px-[10px] py-[20px]" >
     <app-empty-board *ngIf="!currentBoard?.columns?.length"></app-empty-board>
-    <div class="board-container" [ngClass]="{'dark-mode': darkModeService.darkMode()}" *ngIf="currentBoard?.columns?.length">
+    <div class="board-container" *ngIf="currentBoard?.columns?.length">
         @for(column of currentBoard.columns; track column.name) {
             <app-board-column [ColumnData]="column" [boardName]="currentBoard.name"></app-board-column>
         }
-        <div class="create-column" [ngClass]="{'dark-mode': darkModeService.darkMode()}">
+        <div class="create-column">
             <span>+ Create New Column</span>
             
         </div>

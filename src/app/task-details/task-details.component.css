@@ -16,14 +16,14 @@ h3 {
 .subtask-card {
     display: flex;
     gap: 15px;
-    background-color: #F4F7FD;
+    background-color: var(--background-primary);
     cursor: pointer;
     padding: 10px 15px;
     border-radius: 10px;
-    color: #000;
+    color: var(--text-primary);
     .square {
         background-color: #fff;
-        border: solid 1px #828FA3;
+        border: solid 1px var(--text-secondary);
         width: 25px;
         height: 25px;
         display: flex;
@@ -43,12 +43,12 @@ h3 {
     
         &:hover {
             cursor: pointer;
-            background-color: #828FA3;
+            background-color: var(--text-secondary);
             border: none;
         }
     
         &.completed{
-            background-color: #635FC7;
+            background-color: var(--primary);
             border: none;
     
             
@@ -60,7 +60,7 @@ h3 {
     }
 
     &:hover {
-        background-color: #A8A4FF;
+        background-color: var(--primary-hover);
     }
     
 }
@@ -115,7 +115,7 @@ h3 {
         position: absolute;
         width: 100%;
         box-sizing: border-box;
-        background-color: #FFFFFF;
+        background-color: var(--background-secondary);
 
         div {
             color: #828FA3;
@@ -124,52 +124,3 @@ h3 {
     }
 }
 
-.dark-mode {
-   h3 {
-        color: #fff;
-    }
-
-    .status {
-        background-color: #2B2C37;
-        color: #fff;
-
-        input {
-            background-color: #2B2C37;
-            color: #fff;
-            border: solid 1px #828FA3;
-        }
-
-        div:has(label) {
-            color: #fff;
-        }
-    }
-
-    .subtask-card {
-        background-color: #20212C;
-        color: #fff;
-
-        .square {
-            background-color: #2B2C37;
-        }
-
-        .completed {
-            background-color: #635FC7;
-        }
-
-    }
-
-    .completed + span {
-        text-decoration: line-through;
-    }
-
-    .value {
-        color: #fff;
-    }
-    .columns {
-        background-color: #2B2C37;
-
-        div {
-            color: #fff;
-        }
-    }
-   }

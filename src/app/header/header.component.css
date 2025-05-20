@@ -1,7 +1,7 @@
 .header {
  
     border-bottom: solid 1px #979797;
-    background-color: #FFFFFF;
+    background-color: var(--background-secondary);
     
     box-shadow: 0px 0px 1.5px #979797;
  
@@ -9,12 +9,7 @@
     top: 0;
 }
 
-.header-dark {
-    background-color: #2B2C37;
-    border-bottom: solid 1px #2B2C37;
-    transition: background-color 0.3s ease;
 
-}
 
 li:has(.logo) {
     
@@ -24,23 +19,8 @@ li:has(.logo) {
 }
 
 .header-list {
-    display: flex;
-
-    align-items: center;
-    padding: 0;
-    list-style: none;
-    margin: 0;
-    width: 100%;
    
-
-    & ul {
-        display: flex;
-        list-style: none;
-        justify-content: space-between;
-        width: 100%;
-    box-sizing: border-box;
-        
-    }
+    /* width: 100%; */
 }
 
 li:has(h1) {
@@ -58,7 +38,7 @@ li:has(h1) {
     }
 
     .h1-dark {
-        color: #FFFFFF;
+        color: var(--text-primary);
     }
 
     img {
@@ -68,15 +48,15 @@ li:has(h1) {
 }
 
 li:has(.header-list-2) {
-    padding: 0 20px;
+    /* padding: 0 20px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    box-sizing: border-box;
+    box-sizing: border-box; */
 }
 
 li:has(ul) {
-    display: flex;
+    /* display: flex;
     align-items: center;
     gap: 15px;
     position: relative;
@@ -88,15 +68,16 @@ li:has(ul) {
         list-style: none;
         margin: 0;
         padding: 0;
-    }
+    } */
 }
 
 .add-task-button {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     color: #FFFFFF;
-    background-color: #635FC7;
+    background-color:var(--primary);
     padding: 10px 20px;
     border-radius: 30px;
     font-size: 16px;
@@ -111,7 +92,7 @@ li:has(ul) {
     }
 
     &:not(.inactive-add-task-button):hover {
-        background-color: #A8A4FF;
+        background-color: var(--primary-hover);
     }
 }
 
@@ -124,8 +105,8 @@ li:has(ul) {
     position: absolute;
     list-style: none;
     align-items: center;
-    color: #828FA3;
-    background-color: #FFFFFF;
+    color: var(--text-primary);
+    background-color: var(--background-secondary);
     padding: 16px 24px;
     border-radius: 8px;
     font-size: 16px;
@@ -143,12 +124,6 @@ li:has(ul) {
         color: #EA5555;
         padding: 10px 0;
     }
-}
-
-.header-dark .more-menu {
-    background-color: #20212C;
-    color: #FFFFFF;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
 }
 
 li img {

@@ -1,5 +1,5 @@
 
-        <div class="modal-container" *ngIf="modalService.isOpen" (click)="modalService.close()" [ngClass]="{'dark-mode': darkModeEnabled}">
+        <div class="modal-container" *ngIf="modalService.isOpen" (click)="modalService.close()">
 
             <div class="modal-content" (click)="$event.stopPropagation()" >
                 <div class="modal-header">

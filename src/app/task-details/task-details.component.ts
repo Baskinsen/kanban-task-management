@@ -46,7 +46,7 @@ export class TaskDetailsComponent implements OnInit {
     // this.taskColumn.setValue(column)
     this.status.set(column)
 
-      this.taskService.removeTaskFromColumn(this.data.task, this.data.columnName,this.data.index)
+      this.taskService.removeTaskFromColumn(this.data.task.title, this.data.columnName,this.data.index)
     this.taskService.updateTaskColumn(this.data.task, column, this.data.index)
 
 
