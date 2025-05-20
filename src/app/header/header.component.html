@@ -5,7 +5,7 @@
             <li class="col col-md col-lg col-xl-6" *ngIf="!isMobile()">
             <img [src]="logo()" alt="Kanban Logo" class="logo">
             </li>
-            <li *ngIf="isMobile()" class="col-lg col-xl-3"><img [src]="logo()" alt=""></li>
+            <li *ngIf="isMobile()" class="col col-lg col-xl-3"><img [src]="logo()" alt=""></li>
             <li class="col col-md-7 col-9-lg col-xl-8"><h1 [ngClass]="{'h1-dark':darkModeEnabled}">{{activeBoard}}</h1><img *ngIf="isMobile" src="assets/icon-chevron-down.svg" alt=""></li>
         </ul>
         </div>
