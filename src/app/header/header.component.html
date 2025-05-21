@@ -6,7 +6,7 @@
                     <img [src]="this.darkModeService.logo()" alt="Kanban Logo" class="logo">
                 </li>
                 <li *ngIf="this.darkModeService.isMobile()" class="col-1 my-auto"><img [src]="this.darkModeService.logo()" alt=""></li>
-                <li class="col-10 col-md-7 col-9-lg col-xl-8 col-xxl-4 d-flex align-items-center justify-content-center justify-content-md-start" (click)="toggleSideBar()"><h1>{{activeBoard}}</h1><img *ngIf="this.darkModeService.isMobile()" src="assets/icon-chevron-down.svg" alt=""></li>
+                <li class="col-10 col-md-7 col-9-lg col-xl-8 col-xxl-4 d-flex align-items-center justify-content-center justify-content-md-start pointer" (click)="toggleSideBar()"><h1>{{activeBoard}}</h1><img *ngIf="this.darkModeService.isMobile()" src="assets/icon-chevron-down.svg" alt=""></li>
             </ul>
         </div>
     <div class="col-3 col-xl-2 col-xxl-2 my-auto">
