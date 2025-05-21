@@ -55,7 +55,7 @@ navShown = this.darkModeService.showSideBar();
     if(window.innerWidth <= 425) {
       this.darkModeService.isMobile.set(true);
       this.darkModeService.logo.set('assets/logo-mobile.svg')
-      this.darkModeService.showSideBar.update(false)
+      this.darkModeService.showSideBar.update((prev)=>false)
     }
     this.changeDetectorRef.detectChanges();
   }

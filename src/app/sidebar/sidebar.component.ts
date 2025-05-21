@@ -73,6 +73,7 @@ export class SidebarComponent implements OnInit {
   setActiveBoard (boardName:string) {
     this.taskService.activeBoard$$.next(boardName)
     this.taskService.setActiveBoard(boardName);
+    if(this.darkModeService.isMobile())this.darkModeService.showSideBar.update((prev)=> false)
   }
 
   toggleSidebar() {
