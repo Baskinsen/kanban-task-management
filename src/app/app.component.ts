@@ -9,6 +9,7 @@ import { DarkModeService } from './services/dark-mode.service';
 import { ModalComponent } from './modal/modal.component';
 import { ModalService } from './services/modal-service';
 
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, HeaderComponent, SidebarComponent, CommonModule, ModalComponent],

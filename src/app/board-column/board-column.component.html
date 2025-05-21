@@ -5,9 +5,9 @@
         </div>
         <span class="column-title">{{ColumnData.name}} ({{ColumnData.tasks?.length}}) </span>
     </div>
-    <div>
+    <div *ngIf="ColumnData.tasks != undefined" cdkDropList [id]="ColumnData.name" [cdkDropListConnectedTo]="columnNames" [cdkDropListData]="ColumnData.tasks" (cdkDropListDropped)="drop($event)">
 
-        <div *ngFor="let task of ColumnData.tasks" class="task-card"  (click)="openModal('taskDetails', task)">
+        <div *ngFor="let task of ColumnData.tasks" class="task-card"  (click)="openModal('taskDetails', task)" cdkDrag>
             <div class="task-card-header">
                 <h3>{{task.title}}</h3>
             </div>
