@@ -12,30 +12,30 @@ import { ModalService, ModalType } from '../services/modal-service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
-  logo = signal( 'assets/mobile.svg');
+  // logo = signal( 'assets/mobile.svg');
   isMobile = signal(false);
   taskService = inject(TaskService)
   darkModeService = inject(DarkModeService);
   modalService = inject(ModalService)
-
   darkModeEnabled = this.darkModeService.darkMode();  
   isBoardEmpy = false
   activeBoard = ''
   showMenu = false;
 
   constructor(private cdr: ChangeDetectorRef) {
-    effect(()=> {
-      this.darkModeEnabled = this.darkModeService.darkMode();
-     if(window.innerWidth >= 425) {
-      this.logo.set(this.darkModeService.darkMode() == true ? 'assets/logo-light.svg' : 'assets/logo-dark.svg');
-    this.taskService.data().map(board=> {
-      if(board.name == this.taskService.activeBoard()) {
-        this.isBoardEmpy = board.columns.length == 0
-      }
-    })
-     }
+    // effect(()=> {
+    //   this.darkModeEnabled = this.darkModeService.darkMode();
+    //  if(window.innerWidth >= 425) {
+    //   this.logo.set(this.darkModeService.darkMode() == true ? 'assets/logo-light.svg' : 'assets/logo-dark.svg');
+    // this.taskService.data().map(board=> {
+    //   if(board.name == this.taskService.activeBoard()) {
+    //     this.isBoardEmpy = board.columns.length == 0
+    //   }
+    // })
+    //  }
     
-    })
+    // })
+    
   }
 
   ngOnInit(): void {
@@ -46,13 +46,8 @@ export class HeaderComponent implements OnInit {
       }
     })
    
-    this.checkScreenSize();
-    // if (document.documentElement.getAttribute('data-theme') === 'dark') {
-    //   console.log('Dark mode detected');
-    //   this.logo = '/logo-light.svg';
-    // } else {
-    //   this.logo = '/logo-dark.svg';
-    // }
+   
+    // this.checkScreenSize();
   
     console.log(this.taskService.activeBoard$$.getValue())
     console.log(this.isMobile)
@@ -60,20 +55,20 @@ export class HeaderComponent implements OnInit {
     console.log(this.isBoardEmpy)
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(): void {
-    this.checkScreenSize();
-  }
+  // @HostListener('window:resize', ['$event'])
+  // onResize(): void {
+  //   this.checkScreenSize();
+  // }
 
-  private checkScreenSize(): void {
-    console.log(window.innerWidth)
+  // private checkScreenSize(): void {
+  //   console.log(window.innerWidth)
     
-    if(window.innerWidth <= 425) {
-      this.isMobile.set(true);
-      this.logo.set('assets/logo-mobile.svg')
-    }
-    this.cdr.detectChanges();
-  }
+  //   if(window.innerWidth <= 425) {
+  //     this.isMobile.set(true);
+  //     // this.logo.set('assets/logo-mobile.svg')
+  //   }
+  //   this.cdr.detectChanges();
+  // }
 
   toggleMenu() {
     this.showMenu = !this.showMenu;
@@ -134,4 +129,8 @@ export class HeaderComponent implements OnInit {
     this.modalService.isOpen.set(true)
   }
 
+  toggleSideBar() {
+    this.darkModeService.showSideBar.update((prev)=> !prev)
+  }
 }
+

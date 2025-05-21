@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal, effect, Input,  } from '@angular/core';
+import { Component, OnInit, inject, signal, effect, Input, ChangeDetectorRef, HostListener,  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskService } from '../services/task.service';
 import { DarkModeService } from '../services/dark-mode.service';
@@ -6,6 +6,7 @@ import { DarkModeToggleComponent } from '../dark-mode-toggle/dark-mode-toggle.co
 import { RouterModule } from '@angular/router';
 import { ModalService } from '../services/modal-service';
 import { ModalType } from '../services/modal-service';
+import { single } from 'rxjs';
 
 
 @Component({
@@ -21,6 +22,8 @@ export class SidebarComponent implements OnInit {
   boards= signal<string[]>([])
   numberOfBoards: number = 0;
   activeBoard: string = ''
+  cdr = inject(ChangeDetectorRef)
+  isMobile = signal(false)
   
   constructor() {
     console.log(this.taskService.activeBoard)
@@ -48,8 +51,24 @@ export class SidebarComponent implements OnInit {
     this.taskService.activeBoard$.subscribe((data)=> {
       this.activeBoard = data
     })
+
+    // this.checkScreenSize()
     
-  }
+}
+
+//  @HostListener('window:resize', ['$event'])
+//   onResize(): void {
+//     this.checkScreenSize();
+//   }
+
+//   private checkScreenSize(): void {
+//     console.log(window.innerWidth)
+    
+//     if(window.innerWidth <= 425) {
+//       this.isMobile.set(true);
+//     }
+//     this.cdr.detectChanges();
+//   }
 
   setActiveBoard (boardName:string) {
     this.taskService.activeBoard$$.next(boardName)

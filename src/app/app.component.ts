@@ -1,4 +1,4 @@
-import { Component, OnInit, effect, inject } from '@angular/core';
+import { Component, OnInit, effect, inject, ChangeDetectorRef, HostListener, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
@@ -21,12 +21,19 @@ export class AppComponent  {
 taskService = inject(TaskService)
 darkModeService = inject(DarkModeService);
 modalService = inject(ModalService)
+changeDetectorRef = inject(ChangeDetectorRef)
 darkModeEnabled = this.darkModeService.darkMode();
 navShown = this.darkModeService.showSideBar();
   constructor(private http: HttpClient) {
     effect(() => {
       this.navShown= this.darkModeService.showSideBar()
       this.darkModeEnabled = this.darkModeService.darkMode();
+       
+      this.darkModeEnabled = this.darkModeService.darkMode();
+     if(window.innerWidth >= 425) {
+      this.darkModeService.logo.set(this.darkModeService.darkMode() == true ? 'assets/logo-light.svg' : 'assets/logo-dark.svg');
+   
+     }
       
     })
   }
@@ -34,6 +41,22 @@ navShown = this.darkModeService.showSideBar();
   ngOnInit(): void {
    
     this.taskService.getData()
+    this.checkScreenSize()
+  }
+
+ @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    this.checkScreenSize();
+  }
+
+  private checkScreenSize(): void {
+    console.log(window.innerWidth)
+    
+    if(window.innerWidth <= 425) {
+      this.darkModeService.isMobile.set(true);
+      this.darkModeService.logo.set('assets/logo-mobile.svg')
+    }
+    this.changeDetectorRef.detectChanges();
   }
 
 toggleSidebar() {

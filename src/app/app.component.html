@@ -1,12 +1,12 @@
 <div class="container-fluid row gx-0">
   <app-header></app-header>
   <main class="row  gx-0">
-  <app-sidebar class="col"  [ngClass]="{'hide-nav': !darkModeService.showSideBar()}"></app-sidebar>
-  <div class="col-sm-9 col-md-8 col-lg-9  gx-0">
+  <app-sidebar class="col col-xl"  [ngClass]="{'d-none': !darkModeService.showSideBar()}"></app-sidebar>
+  <div class="col-sm-9 col-md-8 col-lg-9 col-xl-10 gx-0" [ngClass]="{'w-100': !darkModeService.showSideBar()}">
 
     <router-outlet />
-  </div>
-    <div class="show-sidebar" [ngClass]="{'hide-show-sidebar': darkModeService.showSideBar()}" (click)="toggleSidebar()">
+  </div >
+    <div *ngIf="!darkModeService.isMobile()" class="show-sidebar" [ngClass]="{'hide-show-sidebar': darkModeService.showSideBar()}" (click)="toggleSidebar()">
       <img src="/assets/icon-show-sidebar.svg" alt="">
   </div>
   <app-modal *ngIf="modalService.isOpen()"></app-modal>

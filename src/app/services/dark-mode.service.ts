@@ -7,6 +7,9 @@ export class DarkModeService {
 
   darkMode = signal<boolean>(false);
   showSideBar = signal<boolean>(true);
+  isMobile = signal(false)
+  logo = signal( 'assets/mobile.svg');
+
 
   constructor() {
 

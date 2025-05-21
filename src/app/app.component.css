@@ -33,7 +33,7 @@ main {
 .app-content {
     display: flex;
     height: calc(100vh - 97px); 
-    background-color: var(--background-secondary);
+    background-color: var(--background-tertiary);
     margin: 0;
     padding: 0;
     width: 100%;
@@ -87,4 +87,17 @@ app-modal {
     position: fixed;
     top: 0;
     z-index: 999;
+}
+
+
+@media only screen and (max-width: 425px) {
+    app-sidebar {
+        position: fixed;
+        top: 10%;
+        height: 40%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+
+    }
 }

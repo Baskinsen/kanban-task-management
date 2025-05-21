@@ -12,6 +12,7 @@
 
     --background-primary: #F4F7FD;
     --background-secondary: #FFFFFF;
+    --background-tertiary: #E4EBFA;
     --primary: #635FC7;
     --primary-hover: #A8A4FF;
     --text-primary: #20212C;
@@ -22,6 +23,7 @@
 [data-bs-theme="dark"] {
     --background-primary: #20212C;
     --background-secondary: #2B2C37;
+    --background-tertiary: #2B2C37;
     --primary: #635FC7;
     --primary-hover: #A8A4FF;
     --text-primary: #FFFFFF;

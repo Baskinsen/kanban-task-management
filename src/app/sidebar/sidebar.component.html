@@ -1,6 +1,6 @@
-<div class="container-fluid w-100 h-100 gx-0">
+<div class="container-fluid w-75 w-100 h-100 gx-0">
 <div class="row h-100 w-100">
-<nav  class="w-100 h-100 d-flex flex-column justify-content-between col-md-3 col-lg-2 py-4 p-0 m-0">
+<nav class="d-flex flex-column mx-auto align-md-items-center justify-content-between col-md-3 col-lg-2 py-4 p-0 m-0  ">
 
     <div class="row postion-sticky pt-3 gx-0">
         <h2 class="">ALL BOARDS ({{numberOfBoards}})</h2>
@@ -16,9 +16,9 @@
         </ul>
     </div>
    
-    <div class="sidebar-footer ">
+    <div class="sidebar-footer w-100">
         <app-dark-mode-toggle ></app-dark-mode-toggle>
-        <div (click)="toggleSidebar()">
+        <div (click)="toggleSidebar()"  *ngIf="!this.darkModeService.isMobile()">
             <img src="assets/icon-hide-sidebar.svg" alt="">
             <span>Hide Sidebar</span>
         </div>
