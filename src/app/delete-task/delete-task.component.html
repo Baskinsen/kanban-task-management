@@ -1,1 +1,6 @@
-<p>delete-task works!</p>
+<div class="delete-container">
+    <p>Are you sure you want to delete the ‘{{data.task.title}}’ task and its subtasks? This action cannot be reversed.</p>
+    <div>
+        <button type="button" (click)="deleteTask()">Delete</button><button type="button" (click)="modalService.close()">Cancel</button>
+    </div>
+</div>

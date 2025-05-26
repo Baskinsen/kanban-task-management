@@ -97,6 +97,18 @@ export class TaskService {
     this.modalService.close()
   }
 
+  deleteTask(task: Task, columnName: string, boardIndex: number) {
+    this.data.update((prevData) => {
+      const updatedData = [...prevData];
+      const columnIndex = updatedData[boardIndex].columns.findIndex((column) => column.name === columnName);
+      if (columnIndex !== -1 && updatedData[boardIndex].columns[columnIndex].tasks !== undefined) {
+        updatedData[boardIndex].columns[columnIndex].tasks = updatedData[boardIndex].columns[columnIndex].tasks?.filter((t) => t.title !== task.title);
+      }
+      return updatedData;
+    });
+    this.modalService.close();
+  }
+
   editTask(task: Task, columnName: string, boardIndex: number) {
     this.data.update((prevData)=> {
       const updatedData = [...prevData];

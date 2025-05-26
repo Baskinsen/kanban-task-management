@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Board } from '../services/task.type';
+import { Component, Input,inject } from '@angular/core';
+import { TaskService } from '../services/task.service';
+import { ModalService } from '../services/modal-service';
 
 @Component({
   selector: 'app-delete-task',
@@ -8,13 +9,12 @@ import { Board } from '../services/task.type';
   styleUrl: './delete-task.component.css'
 })
 export class DeleteTaskComponent {
-  @Input() data: Board = {
-    name: '',
-    columns: [
-      {
-        name: '',
-        tasks: []
-      }
-    ]
-  }
+  taskService = inject(TaskService)
+  modalService = inject(ModalService)
+  @Input() data!:any
+
+   
+  deleteTask() {
+    this.taskService.deleteTask(this.data.task, this.data.columnName, this.data.index)
+}
 }

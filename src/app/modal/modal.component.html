@@ -3,7 +3,7 @@
 
             <div class="modal-content" (click)="$event.stopPropagation()" >
                 <div class="modal-header">
-                    <h2>{{config?.title}}</h2>
+                    <h2 [ngClass]="{'text-danger': this.config?.name?.toLocaleLowerCase()?.includes('delete')}">{{config?.title}}</h2>
                     <img *ngIf="isEditOrDetails()" src="assets/icon-vertical-ellipsis.svg" alt="" class="icon-ellipsis" (click)="openMenu()">
                 </div>
                 @switch (modalService.modalConfig()?.name) {

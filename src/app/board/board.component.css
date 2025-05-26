@@ -24,8 +24,7 @@ div {
     display: grid;
     grid-auto-flow: column; 
     gap: 30px;
-    min-width: min-content; 
-    min-height: min-content;
+  
     height: 100%;
 }
 

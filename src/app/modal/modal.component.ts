@@ -65,17 +65,16 @@ export class ModalComponent {
   openDeleteTaskModal(type: ModalType) {
     this.modalService.modalConfig.set({
       name: type,
-      title: this.config?.data?.task?.title || '',
+      title:  'Delete this task?',
       message: '',
       data: {
-        task: {
-          ...this.config?.data.task
-        },
+        task: this.config?.data.task,
         columnName: this.config?.data.columnName,
         boardName: this.config?.data.boardName,
         index: this.config?.data.index,
       },
     })
+    this.openMenu()
   }
 
 }

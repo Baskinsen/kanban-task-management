@@ -1,0 +1,34 @@
+.delete-container {
+    display: flex;
+    flex-direction:column;
+
+    p {
+        color: #828FA3;
+        font-size: 18px;
+        font-weight: normal;
+    }
+
+    div {
+        display: flex;
+        gap: 10px;
+
+        button {
+            padding: 15px 20px;
+            width: 50%;
+            border-radius: 30px;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        button:first-of-type {
+            background-color: #EA5555;
+            color: #ffffff;
+        }
+
+        button:last-of-type {
+            background-color: #F4F7FD;
+            color: #635FC7;
+        }
+    }
+}
