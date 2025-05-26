@@ -53,7 +53,6 @@ export class TaskService {
   }
 
   setActiveBoard(board: string) {
-    console.log(board)
     this.activeBoard.set(board);
     console.log(this.activeBoard())
   }
@@ -67,18 +66,14 @@ export class TaskService {
 
   editBoard(board: Board) {
     this.data.update((prevData)=> {
-      console.log(board)
-      console.log(board.index)
       if (board.index !== -1) {
         const updatedData = [...prevData];
-        console.log(updatedData[board?.index as number])
         updatedData[board.index as number] = board;
         return updatedData;
       }
 
       return prevData;
     })
-    console.log(this.data())
     this.activeBoard$$.next(board.name);
 
     this.modalService.close()
@@ -132,7 +127,6 @@ export class TaskService {
       }
       return updatedData;
     })
-    // this.modalService.close()
   }
   removeTaskFromColumn(taskTitle: string, columnName: string, boardIndex: number) {
     this.data.update((prevData) => {

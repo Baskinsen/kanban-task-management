@@ -4,7 +4,7 @@
         @for(column of currentBoard.columns; track column.name) {
             <app-board-column [ColumnData]="column" [boardName]="currentBoard.name"></app-board-column>
         }
-        <div class="create-column">
+        <div class="create-column" (click)="openEditModal('editBoard')">
             <span>+ Create New Column</span>
             
         </div>

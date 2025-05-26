@@ -16,6 +16,7 @@ export class BoardColumnComponent {
 taskService = inject(TaskService);
 darkModeService = inject(DarkModeService);
 modalService = inject(ModalService);
+
   @Input() ColumnData: Column = {
     name: '',
     tasks: [],
@@ -69,4 +70,6 @@ openModal(type: ModalType, task: Task) {
   })
   this.modalService.isOpen.set(true)
 }
+
+
 }

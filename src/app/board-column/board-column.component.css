@@ -1,3 +1,7 @@
+.column {
+    width: 280px;
+}
+
 
 
 div:has(.task-card) {
