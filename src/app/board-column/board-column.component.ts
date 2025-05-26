@@ -44,7 +44,6 @@ drop(event: CdkDragDrop<Task[]>) {
     return;
   }
   const previousContainerData = event.previousContainer.data;
-  const currentContainerData = event.container.data;
   const previousContainerIndex = event.previousContainer.id;
   const currentContainerIndex = event.container.id;
   const task = previousContainerData[event.previousIndex];

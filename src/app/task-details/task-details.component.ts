@@ -22,7 +22,6 @@ export class TaskDetailsComponent implements OnInit {
   constructor() {
     effect(()=> {
       this.darkModeEnabled = this.darkModeService.darkMode()
-      // this.status.set(this.data.columnName)
       console.log(this.status())
       console.log(this.darkModeEnabled)
     })
@@ -43,7 +42,6 @@ export class TaskDetailsComponent implements OnInit {
 
   selectColumn(column:string) {
     this.dropdownOpen = !this.dropdownOpen
-    // this.taskColumn.setValue(column)
     this.status.set(column)
 
       this.taskService.removeTaskFromColumn(this.data.task.title, this.data.columnName,this.data.index)

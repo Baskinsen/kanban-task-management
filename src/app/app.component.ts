@@ -1,4 +1,4 @@
-import { Component, OnInit, effect, inject, ChangeDetectorRef, HostListener, } from '@angular/core';
+import { Component, OnInit, effect, inject, ChangeDetectorRef, HostListener, OnDestroy, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
@@ -16,7 +16,7 @@ import { ModalService } from './services/modal-service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent  {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'task-management-app';
   data: any;
 taskService = inject(TaskService)
@@ -25,9 +25,11 @@ modalService = inject(ModalService)
 changeDetectorRef = inject(ChangeDetectorRef)
 darkModeEnabled = this.darkModeService.darkMode();
 navShown = this.darkModeService.showSideBar();
+private darkModeEffect: any;
+
   constructor(private http: HttpClient) {
-    effect(() => {
-      this.navShown= this.darkModeService.showSideBar()
+    this.darkModeEffect = effect(() => {
+      this.navShown = this.darkModeService.showSideBar()
       this.darkModeEnabled = this.darkModeService.darkMode();
        
       this.darkModeEnabled = this.darkModeService.darkMode();
@@ -40,7 +42,6 @@ navShown = this.darkModeService.showSideBar();
   }
 
   ngOnInit(): void {
-   
     this.taskService.getData()
     this.checkScreenSize()
   }
@@ -65,5 +66,12 @@ toggleSidebar() {
     this.darkModeService.showSideBar.update(() => true);
     console.log(this.darkModeService.showSideBar())
   }
+
+  ngOnDestroy(): void {
+    this.changeDetectorRef.detach();
+    this.taskService.activeBoard$$.complete();
+    this.darkModeEffect().unsubscribe();
+  }
 }
+
 

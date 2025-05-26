@@ -1,4 +1,4 @@
-import { Component, Input, OnInit,inject, effect } from '@angular/core';
+import { Component, Input, OnInit,inject, effect, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Board, Task, SubTask } from '../services/task.type';
@@ -35,7 +35,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, FormBuilder, Validators,Fo
     ])
   ]
 })
-export class EditTaskComponent implements OnInit {
+export class EditTaskComponent implements OnInit, OnDestroy {
   @Input() data!: any
   taskService = inject(TaskService)
   darkModeService = inject(DarkModeService)
@@ -45,13 +45,20 @@ export class EditTaskComponent implements OnInit {
   taskForm!: FormGroup
   taskColumn!: FormControl
   dropdownOpen = false;
-
+  private darkModeEffect: any;
 
   constructor() {
-    effect(()=> {
+    this.darkModeEffect = effect(()=> {
       this.darkModeEnabled = this.darkModeService.darkMode()
       console.log(this.darkModeEnabled)
     })
+    this.taskForm = this.formBuilder.group({
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      subtasks: this.formBuilder.array([], Validators.required), 
+     
+    })
+    this.taskColumn = this.formBuilder.control('', Validators.required)
   }
 
   ngOnInit () {
@@ -59,15 +66,18 @@ export class EditTaskComponent implements OnInit {
       title: [subtask.title, Validators.required],
       isCompleted: [subtask.isCompleted]
     }));
-    this.taskForm = this.formBuilder.group({
-      title: [this.data.task.title, Validators.required],
-      description: [this.data.task.description, Validators.required],
-      subtasks: this.formBuilder.array(subtaskFormGroups, Validators.required), 
-     
+    this.taskForm.patchValue({
+      title: this.data.task.title,
+      description: this.data.task.description,
+      subtasks: subtaskFormGroups
     })
-    this.taskColumn = this.formBuilder.control(this.columnNames[0], Validators.required)
+    this.taskColumn.setValue(this.columnNames[0])
 
     console.log(this.data)
+  }
+
+  ngOnDestroy(): void {
+    this.darkModeEffect();
   }
 
   get subtasks() {
@@ -112,4 +122,4 @@ export class EditTaskComponent implements OnInit {
     // this.taskService.addBoard(this.taskForm.value as Board)
     this.taskService.editTask(this.taskForm.value as Task, this.taskColumn.value as string, this.data.index as number)
   }
-} 
+}

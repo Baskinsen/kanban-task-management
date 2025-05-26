@@ -32,16 +32,6 @@ export class SidebarComponent implements OnInit {
     effect(() => {
     console.log(this.darkModeService.darkMode())
     this.boards.set(this.taskService.getBoardNames())
-    // this.taskService.getBoardNames().subscribe((data)=> {
-    //   console.log(data)
-    //   this.boards.set(data)
-    // }
-    // )
-    this.taskService.getNumberOfBoards().subscribe((data)=> {
-      this.numberOfBoards = data;
-      console.log(this.numberOfBoards)
-    }
-    )
     })
    
   }
@@ -51,24 +41,13 @@ export class SidebarComponent implements OnInit {
     this.taskService.activeBoard$.subscribe((data)=> {
       this.activeBoard = data
     })
-
-    // this.checkScreenSize()
+ this.taskService.getNumberOfBoards().subscribe((data)=> {
+      this.numberOfBoards = data;
+      console.log(this.numberOfBoards)
+    }
+    )
     
 }
-
-//  @HostListener('window:resize', ['$event'])
-//   onResize(): void {
-//     this.checkScreenSize();
-//   }
-
-//   private checkScreenSize(): void {
-//     console.log(window.innerWidth)
-    
-//     if(window.innerWidth <= 425) {
-//       this.isMobile.set(true);
-//     }
-//     this.cdr.detectChanges();
-//   }
 
   setActiveBoard (boardName:string) {
     this.taskService.activeBoard$$.next(boardName)
@@ -96,4 +75,12 @@ export class SidebarComponent implements OnInit {
 
   }
 
+
+  ngOnDestroy(): void {
+    this.taskService.activeBoard$$.complete();
+    // this.taskService.getNumberOfBoards().unsubscribe();
+    // this.boards.complete();
+    // this.isMobile.complete();
+  
+  }
 }

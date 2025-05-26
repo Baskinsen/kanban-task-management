@@ -43,7 +43,7 @@ export class AddBoardComponent {
   darkModeEnabled = this.darkModeService.darkMode()
 
   constructor() {
-    // Initialize the form after Input data is available
+  
     effect(()=> {
       this.darkModeEnabled = this.darkModeService.darkMode()
       console.log(this.darkModeEnabled)
